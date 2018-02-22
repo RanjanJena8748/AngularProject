@@ -1,0 +1,18 @@
+<div class="container">
+    <table class="table" style="width:95%">
+      <thead>
+        <tr>
+          <th> ROLENAME </th>
+          <th> JOBFUNCTION</th>
+          <th>ACTIVE</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of roles">
+        <tr>
+          <td>{{item.RoleName}}</td>
+          <td>{{item.Name}}</td>
+          <td>{{item.Active==true?'YES':'NO'}}</td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table" style="width:95%">
+    <thead>
+      <tr>
+        <th> SURNAME </th>
+        <th> FIRSTNAME</th>
+        <th>USERNAME</th>
+        <th>USERROLE</th>
+        <th>ACTIVE</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of users">
+      <tr>
+        <td>{{item.LastName}}</td>
+        <td>{{item.FirstName}}</td>
+        <td>{{item.UserName}}</td>
+        <td>{{item.RoleName}}</td>
+        <td>{{item.TypeRowActiveId==0?'YES':'NO'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
