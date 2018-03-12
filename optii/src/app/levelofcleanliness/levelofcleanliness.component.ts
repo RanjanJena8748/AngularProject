@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { CleannesslevelService } from '../services/cleannesslevel.service';
+import { Cleannesslevel } from '../models/cleannesslevel';
 
 @Component({
   selector: 'app-levelofcleanliness',
   templateUrl: './levelofcleanliness.component.html',
-  styleUrls: ['./levelofcleanliness.component.css']
+  styleUrls: ['./levelofcleanliness.component.css'],
+  providers: [CleannesslevelService]
 })
 export class LevelofcleanlinessComponent implements OnInit {
-
-  constructor() { }
+  cleanlinesslevel: Cleannesslevel[];
+  constructor(private cleannesslevelservice: CleannesslevelService) { }
 
   ngOnInit() {
+    return this.cleannesslevelservice.getCleannessLevel().subscribe(res => this.cleanlinesslevel = res);
   }
-
 }

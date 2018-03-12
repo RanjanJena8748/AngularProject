@@ -1,0 +1,13 @@
+.alert-error{
+    color:#C41257!important;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    margin-top: 10px;
+}
+.row{
+    margin-top: 15px;
+}
+select {
+    height: 30px;
+    line-height: initial;
+}

@@ -1,5 +1,5 @@
 export class Role {
-    userroleid: number;
+    UserRoleId: number;
     rolename: string;
     active: boolean;
     jobjunctionname: string;

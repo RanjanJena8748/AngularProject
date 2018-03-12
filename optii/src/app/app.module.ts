@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RosterComponent } from './roster/roster.component';
@@ -25,6 +26,7 @@ import { DeviceComponent } from './device/device.component';
 import { PausereasonsComponent } from './pausereasons/pausereasons.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { TemplatesComponent } from './templates/templates.component';
 
 const appRoutes: Routes = [
   { path: 'assingment', component: AssignmentComponent },
@@ -89,11 +91,13 @@ const appRoutes: Routes = [
     DeviceComponent,
     PausereasonsComponent,
     QrcodeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    TemplatesComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes,
       { enableTracing: true, useHash: true } // <-- debugging purposes only
     )

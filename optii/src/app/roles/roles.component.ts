@@ -13,6 +13,6 @@ export class RolesComponent implements OnInit {
   constructor(private roleServices: RoleService) { }
 
   ngOnInit() {
-    return this.roleServices.getUserRole().subscribe(role => this.roles = role[0]);
+    return this.roleServices.getUserRole().subscribe(role => this.roles = role);
   }
 }

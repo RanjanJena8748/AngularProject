@@ -15,4 +15,7 @@ export class User {
     managetsync: boolean;
     assignqrcode: boolean;
     assignadhoc: boolean;
+    userStatus: boolean;
+    TypeRowActiveId: number;
+    UserRoleId: number;
 }

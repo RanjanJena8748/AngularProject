@@ -1,3 +1,21 @@
-<p>
-  pausereasons works!
-</p>
+<div class="container">
+  <table class="table" style="width:95%">
+    <thead>
+      <tr>
+        <th> REASONS </th>
+        <th> ACTIVE</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of pausereasons">
+      <tr>
+        <td>{{item.pausereasontext}}</td>
+        <td>{{item.Active==true?'YES':'NO'}}</td>
+        <td>
+          <a class="glyphicon glyphicon-pencil editrsn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+          <a class="glyphicon glyphicon-trash deletersn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>          
+        </td>
+      </tr>  
+    </tbody>
+  </table>
+</div>

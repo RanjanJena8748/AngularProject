@@ -1,3 +1,83 @@
-<p>
-  assignment works!
-</p>
+<div class="container" style="width:100%;padding-top: 10px;">
+    <div class="row">
+        <div class='col-sm-3'>
+            <select id="ddlMainShift">
+                <option selected="selected" value="">- Select Shift -</option>
+                <option selected="selected" value="303E8168-B83A-471B-ABA5-16A547B2DC85">- AM Shift -</option>
+                <option selected="selected" value="303E8168-B83A-471B-ABA5-16A547B2DC85">- PM Shift -</option>
+            </select>
+        </div>
+
+        <div class='col-sm-3'>
+                <input type="text" style="width:150px!important" id="cdate" class="datepicker" data-date-format="yyyy-mm-dd">
+        </div>
+
+        <div class='col-sm-3'>
+            <select id="ddlMainZone" class="span2">
+                <option>--Show all zones--</option>
+            </select>
+        </div>
+
+        <div class='col-sm-3'>
+            <select id="ddlassigned" class="span2" style=" line-height:initial;width:initial;">
+                <option value="0">--All Assignment Status--</option>
+                <option value="1">Unassigned</option>
+            </select>
+        </div>
+
+
+    </div>
+    <div class="row se">
+        <div class='col-sm-3'>
+            <select id="ddlRosteredUser" class="span2" multiple="multiple" style=" line-height:initial;"></select>
+        </div>
+
+        <div class='col-sm-3' style="padding-left: 10px;">
+            <select id="ddlTimmed" class="span3" style=" line-height:initial;width:auto!important">
+                <option value="0">--All Assignment Type--</option>
+                <option value="1">Timed Assignment</option>
+                <option value="2">Ad Hoc</option>
+            </select>
+        </div>
+        <div class='col-sm-3'>
+            <select id="ddlQrcode" class="span3" style=" line-height:initial;width:auto!important">
+                <option value="0">--All Location--</option>
+                <option value="1">Location With QR Code</option>
+                <option value="2">Location Without QR Code</option>
+            </select>
+        </div>
+        <div class='col-sm-3'>
+            <input type="button" class="span2 btn" style="width:142px!important;background-color:#C41257;color:#fff" id="btnAdHoc" value="Create Ad Hoc Job">
+        </div>
+    </div>
+    <div class="alert alert-error">
+        <strong>Click on Zone / Area / Sub Area to assign</strong>
+        <div id="imgAssign" class="span3">
+            <a href="javascript:void(0);" class="pull-right setting">
+                <img style="width: 35px; margin-top: -46px; opacity: 0.3;" src="../assets/img/cog.png">
+            </a>
+            <ul id="gearMenu" style="width: 300px">
+                <!-- <li>
+                    <span class="assign"><a href="javascript:void(0);" class="assign-inspect">Assign Inspection</a></span>
+                    <span class="clear hide"><a href="javascript:void(0);" class="clear-task">Clear Task</a></span>
+                    <span class="assignDiv hide" style="color: orange;">
+                        Are you sure you want to Assign Task?
+
+                        <span style="display: inline-block; width: 30%;"><a href="javascript:void(0);" class="assign-yes">Yes</a></span>
+                        <span style="display: inline-block; width: 30%;"><a href="javascript:void(0);" class="assign-no">No</a></span>
+                    </span>
+                    <span class="clearDiv hide" style="color: orange;">
+                        Are you sure you want to Clear Task?
+
+                        <span style="display: inline-block; width: 30%;"><a href="javascript:void(0);" class="clear-yes">Yes</a></span>
+                        <span style="display: inline-block; width: 30%;"><a href="javascript:void(0);" class="clear-no">No</a></span>
+                    </span>
+                </li> -->
+            </ul>
+        </div>
+        <div id="alertUpadate" class="span3 hide">
+            Updating Records, Please Wait..
+        </div>
+    </div>
+
+</div>

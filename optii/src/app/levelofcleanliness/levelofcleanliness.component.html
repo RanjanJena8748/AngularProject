@@ -1,3 +1,25 @@
-<p>
-  levelofcleanliness works!
-</p>
+<div class="container">
+  <table class="table" style="width:95%">
+    <thead>
+      <tr>
+        <th> LEVELS </th>
+        <th> DEFINATIONS</th>
+        <th>PASS</th>
+        <th>PERFECT</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of cleanlinesslevel">
+      <tr>
+        <td>{{item.RatingLevel}}</td>
+        <td>{{item.LevelOfCleanlinessDefinition}}</td>
+        <td>{{item.FailOrPassLevel}}</td>
+        <td>{{item.PerfectLevel}}</td>
+        <td>
+          <a class="glyphicon glyphicon-pencil editrsn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+          <a class="glyphicon glyphicon-trash deletersn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
