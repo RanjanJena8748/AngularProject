@@ -13,6 +13,8 @@ export class LevelofcleanlinessComponent implements OnInit {
   constructor(private cleannesslevelservice: CleannesslevelService) { }
 
   ngOnInit() {
-    return this.cleannesslevelservice.getCleannessLevel().subscribe(res => this.cleanlinesslevel = res);
+    return this.cleannesslevelservice.getCleannessLevel().subscribe((data: Cleannesslevel[]) => {
+        this.cleanlinesslevel = data;
+      });
   }
 }

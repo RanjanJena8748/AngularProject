@@ -27,6 +27,9 @@ import { PausereasonsComponent } from './pausereasons/pausereasons.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TemplatesComponent } from './templates/templates.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   { path: 'assingment', component: AssignmentComponent },
@@ -38,6 +41,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'configuration', component: ConfigurationComponent,
+    // canActivateChild: true,
     children: [
       {path: '', redirectTo: 'users', pathMatch: 'full'},
       { path: 'users', component: UsersComponent },
@@ -92,11 +96,14 @@ const appRoutes: Routes = [
     PausereasonsComponent,
     QrcodeComponent,
     PagenotfoundComponent,
-    TemplatesComponent
+    TemplatesComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes,
       { enableTracing: true, useHash: true } // <-- debugging purposes only
