@@ -1,3 +1,82 @@
-<p>
-  viewnotes works!
-</p>
+<div class="container" style="position:fixed;background-color:white;width:100%">
+  <div class="row">
+    <div class="col-sm-3">
+      <label for="ir_StartDate">
+        <strong>Start Date</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <label for="msl_Towers">
+        <strong>Users</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <label for="msl_Towers">
+        <strong>Zone</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <label for="msl_Towers">
+        <strong>Sub Area</strong>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <input id="ntr_startdate" type="text">
+    </div>
+    <div class="col-sm-3">
+      <select id="ntr_users">
+        <option value="">--Select--</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <select id="ntr_Zones" multiple="multiple" onchange="ddlzoneonchange()">
+        <option value="">--Select--</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <select id="ntr_SubAreas" multiple="multiple" onchange="ddlSubAreaonchange()">
+        <option value="">--Select--</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label for="dpk_StartDate">
+        <strong>End Date</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <label for="msl_Towers">
+        <strong>Category</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <label for="msl_Towers">
+        <strong>Area</strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <input id="ntr_enddate" type="text">
+    </div>
+    <div class="col-sm-3">
+      <select id="ntr_catagories" multiple="multiple">
+        <option value="">--Select--</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <select id="ntr_areas" multiple="multiple" onchange="ddlAreaonchange()">
+        <option value="">--Select--</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <input type="button" value="Refresh Report" id="ntr_refresh" class="btn btnMain" />
+    </div>
+  </div>
+</div>

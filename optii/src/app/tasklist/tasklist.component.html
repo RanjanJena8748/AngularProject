@@ -1,3 +1,96 @@
-<p>
-  tasklist works!
-</p>
+<div class="container filterdiv" style="width:100%;padding-top:10px;">
+    <div class="row">
+        <div class="col-sm-2">
+            <select class="form-control" style="width: auto; margin: 0 0 0 10px; line-height: initial;" data-ng-model="selectedShift"
+                ng-init="selectedShift = options[0]">
+                <option *ngFor="let opt of shifts" [value]="opt.ShiftId" [selected]="opt.selected == true">{{opt.ShiftName}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select id="slctUnrate">
+                <option value="">All Inspections</option>
+                <option value="0">Incomplete</option>
+                <option value="1">Complete</option>
+                <option value="2">Ad Hoc</option>
+            </select>
+        </div>
+
+        <div class="col-sm-3 search-wrapper">
+            <form>
+                <input type="search" id="txtinsSearch" name="focus" required class="search-box" placeholder="Search By Inspector Name" />
+                <button id="inspreset" class="close-icon" type="reset"></button>
+            </form>
+        </div>
+
+        <div class="col-sm-3 search-wrapper">
+            <form>
+                <input type="text" id="txtLocationSearch" name="focus" required class="search-box" placeholder="Search By Location Name"
+                />
+                <button id="locationreset" class="close-icon" type="reset"></button>
+            </form>
+        </div>
+        <div class="col-sm-2" style="margin-top: 15px; float: right;">
+            <span class=" date">
+                Date:
+                <span id="TDate"></span>
+            </span>
+
+        </div>
+    </div>
+    <div class="scrollmenu">
+        <div class="span3 pa-wrapper" style="border: #C41257 1px solid;margin-bottom: 17px;margin-top: 10px;" *ngFor="let item of tasklists | unique:'UserId'">
+            <div *ngIf="item.UserId;let userid">
+                <div class="odd main-div">
+                    <div class="left-div">
+                        <div class="text-left">
+                            Name:
+                            <a href="javascript:void(0);" class="showLeft" data-id="2950">{{item.username}}</a>
+                        </div>
+                    </div>
+                    <div class="text-right name-img-right">
+                        <div class="tab-img-up">
+                            <div>
+                                <a data-value="2950" data-starttime="2018/03/23 08:00:00 GMT+08:00" data-endtime="2018/03/23 16:00:00 GMT+08:00" data-name="Huang,  Antonio"
+                                    href="javascript:void(0);" class="assignment" data-target="#modalAssignment1">
+                                    <img src="../assets/img/PA_Icon1.png" title="Click To Assign">
+                                </a>
+                            </div>
+                            <div class="right-img">
+                                <img src="../assets/img/off-status.png">
+                            </div>
+                        </div>
+                        <div class="tab-img-down">
+                            <div class="left-img">
+                                <a data-value="2950" href="javascript:void(0);" data-target="#file-modal" class="" style="vertical-align: top;">
+
+                                </a>
+                            </div>
+                            <div class="right-imgd">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="item.ZoneId;let zoneid">
+                    <div *ngFor="let zone of tasklists | checklist : 'UserId': userid | unique : 'ZoneId'">
+                        <div class="odd displayD2 zone-heig">
+                            <p class="text-right"></p>
+                            <p class="zone-text">Zone:
+                                <strong>{{zone.ZoneName}}</strong>
+                            </p>
+                        </div>
+                        <div *ngIf="zone.AreaId;let areaid">
+                            <div class="pa-heading displayD4" *ngFor="let area of tasklists | checklist : 'UserId': userid | checklist : 'ZoneId': zoneid | unique : 'AreaId'">
+                                <div class="textcut" style="width:200px">
+                                    Area:
+                                    <span>
+                                        <strong>{{area.AreaName}}</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

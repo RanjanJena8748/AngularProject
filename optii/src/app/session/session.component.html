@@ -1,3 +1,40 @@
-<p>
-  session works!
-</p>
+<div class="m-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        Start Date
+      </div>
+      <div class="col-sm-3">
+        Users
+      </div>
+      <!-- <div class="col-sm-4">
+          Users
+        </div> -->
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+          <input id="sessionstartdate" type="text" class="form-control" >
+      </div>
+      <div class="col-sm-3">
+        <select id="sessionuser" class="form-control" style="width: auto; margin: 0 0 0 10px; line-height: initial;" data-ng-model="selectedShift" ng-init="selectedShift = options[0]">
+            <option *ngFor="let opt of users" [value]="opt.UserId" [selected]="opt.selected == true">{{opt.LastName+ ', '+opt.FirstName}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            End Date
+        </div>
+        <div class="col-sm-3">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-3">
+              <input id="sessionstartdate" type="text" class="form-control" >
+          </div>
+          <div class="col-sm-3">
+              <input type="button" value="Search" id="session_refresh" class="btn btn-primary" />
+          </div>
+        </div>
+  </div>
+</div>

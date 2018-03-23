@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import 'rxjs/add/operator/map';
 import { Shift } from '../models/shift';
 
 @Injectable()
 export class ShiftsService {
-shifts: Shift[];
-  constructor( private _http: Http) { }
+  constructor( private _http: HttpClient) { }
   getAllShifts() {
     const _url = 'http://localhost:3000/api/shifts';
-    return this._http.get(_url).map(res => res.json());
+    return this._http.get<Shift[]>(_url);
 }
 }

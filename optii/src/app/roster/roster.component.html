@@ -2,23 +2,23 @@
   <div class="container" style="width: 95%;">
     <div class="row">
       <div class='col-sm-2' style="margin-left:-50px;">
-          <div class="form-group">
-        <select class="form-control" data-ng-model="selectedJobFunction">
-          <option [value]="6">Inspecting Public Area</option>
-        </select>
+        <div class="form-group">
+          <select class="form-control" data-ng-model="selectedJobFunction">
+            <option [value]="6">Inspecting Public Area</option>
+          </select>
         </div>
       </div>
       <div class='col-sm-4'>
-          <div class="form-group">
-        <select class="form-control" style="width: auto; margin: 0 0 0 10px; line-height: initial;" data-ng-model="selectedShift" ng-init="selectedShift = options[0]">
-          <option *ngFor="let opt of shifts" [value]="opt.ShiftId" [selected]="opt.selected == true">{{opt.ShiftName}}</option>
-        </select>
+        <div class="form-group">
+          <select class="form-control" style="width: auto; margin: 0 0 0 10px; line-height: initial;" [(ngModel)]="selectedShift" (change)="shiftChange()">
+            <option *ngFor="let opt of shifts;let i = index" [value]="opt.ShiftId" [selected]="i === 0">{{opt.ShiftName}}</option>
+          </select>
         </div>
       </div>
-      <div class='col-sm-6' >
+      <div class='col-sm-6'>
         <div class="form-group" style="float:right">
           <div class='input-group date' id='datetimepicker1'>
-            <input type='text' class="form-control" />
+            <input type='text' class="form-control" value="20 Mar 2018" />
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -27,19 +27,86 @@
       </div>
     </div>
   </div>
-  <!-- <div class="datepicker" focus style="float: right; margin: -3px 100px 0 0">
-      <input type="text" style="height:30px!important;" id="rDate" data-ng-model="rosterDate" ng-change="loadFromServer(1);" />
-      <span>
-          <img src="../assets/img/icon-calendar.png" />
-      </span>
-  </div> -->
 </div>
-<div style="position: fixed; top: 45%; left: 25%; width: 50%; height: 30%; text-align: center;">
+<div *ngIf="!isRostered" style="position: fixed; top: 45%; left: 25%; width: 50%; height: 30%; text-align: center;">
   <h1 style="position:relative;top:0;left:0;">Welcome to a new day</h1>
   <span>Click "Add Staff to On Duty" to get started.</span>
 </div>
+<div *ngIf="isRostered" id="roster">
+  <div id="RosterUsers">
+    <div id="headings">
+      <p class="rosteredname">name</p>
+    </div>
+    <div class="rosterName" *ngFor="let item of rostered">
+        <p class="rosteredname">{{item.LastName +', '+item.FirstName}}</p>
+        <span class="removeUser" (click)="removeRoster(item.UserId)">x</span>
+    </div>
+  </div>
+  <div id="InteractiveRoster" style="height: 457px;">
+      <div id="rosterScale" scrollfix style="height: 520px; left: 229px;">
+          <span>00:00</span><span>01:00</span><span>02:00</span><span>03:00</span><span>04:00</span><span>05:00</span><span>06:00</span><span>07:00</span><span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span><span>20:00</span><span>21:00</span><span>22:00</span><span>23:00</span><span class="afterMidnight afterMidnightFirst">00:00</span><span class="afterMidnight">01:00</span><span class="afterMidnight">02:00</span><span class="afterMidnight">03:00</span><span class="afterMidnight">04:00</span><span class="afterMidnight">05:00</span><span class="afterMidnight">06:00</span><span class="afterMidnight">07:00</span><span class="afterMidnight">08:00</span><span class="afterMidnight">09:00</span><span class="afterMidnight">10:00</span><span class="afterMidnight">11:00</span>
+      </div>
+      <div id="rosterScaleHeadings" scrollfix>
+          <span>00:00</span><span>01:00</span><span>02:00</span><span>03:00</span><span>04:00</span><span>05:00</span><span>06:00</span><span>07:00</span><span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span><span>20:00</span><span>21:00</span><span>22:00</span><span>23:00</span><span>00:00<br /><p>next day</p></span><span>01:00</span><span>02:00</span><span>03:00</span><span>04:00</span><span>05:00</span><span>06:00</span><span>07:00</span><span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span>
+      </div>
+      <div class="chart-holder" *ngFor="let item of rostered" scalesizer bindonce>
+          <div class="chart" attr.data-userid="{{item.UserId}}" attr.data-jobfunctiontypeid="6" attr.data-startpixel="800" attr.data-endpixel="1600" sliders>
+            <span class="bar" style="width:800px; left:800px" drag-me>
+              <span class="grippy">
+                <span></span><span></span><span></span></span></span>
+                <span class="leftDrag" style="left:800px" drag-me>
+                  <img src="../assets/img/leftSlider.png" /></span>
+                  <span class="rightDrag" style="left:1600px" drag-me>
+                    <img src="../assets/img/rightSlider.png" />
+                  </span>
+          </div>
+      </div>
+  </div>
+</div>
 <div id="rosterFooter">
   <button id="btnSaveChanges" class="btnSaveRosterChangesDisabled btnSaveRosterChanges" id="btnSaveChanges" data-ng-disabled="!dirtyUserExists">Save Changes</button>
-  <input type="button" id="btnAddUser" class="btn btnMain greenBtn" data-ng-click="setShowDetail(true)" value="Add Staff to On Duty"
-  />
+  <input type="button" id="btnAddUser" class="btn btnMain greenBtn" (click)="AddUser()" value="Add Staff to On Duty" data-toggle="modal"
+    data-target="#addRoster" />
 </div>
+
+<div id="addRoster" class="modal fade" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog user-details">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <select class="pull-right">
+          <option>Inspection Public Area</option>
+        </select>
+        <h4 class="modal-title">Rostering</h4>
+
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6" style="text-align:center">
+            <span>Off Duty</span>
+            <ul class="scroller">
+              <li *ngFor="let item of offDutyUser" (click)="addOnduty(item)">{{item.LastName +', '+item.FirstName}}</li>
+            </ul>
+          </div>
+          <div class="col-sm-6 " style="text-align:center">
+            <span>On Duty</span>
+            <ul class="scroller">
+              <li *ngFor="let item of onDutyUser" (click)="addOffduty(item)">{{item.LastName +', '+item.FirstName}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <input type="button" style="margin:0px 0px 0px 0px;right:388px;" id="btnAddBulk" (click)="AddBulk()" class="btn selectAll rosterButtons"
+          value="Add Everyone" />
+        <input type="button" style="margin:0px 0px 0px 0px;right:255px;" id="btnRemoveBulk" (click)="RemoveBulk()" class="btn selectAll rosterButtons"
+          value="Remove Everyone" />
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <!-- <input type="button" style="margin:0px 0px 0px 0px" id="btnCancel" class="btn" value="Cancel" /> -->
+        <button data-ng-init="srclick=true" class="btnSaveRosterChanges" (click)="saveRoster()" data-label="Save  & Close">Save & Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

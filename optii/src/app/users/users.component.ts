@@ -8,7 +8,7 @@ import { Role } from '../models/role';
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
-  providers: [UserService, RoleService]
+  providers: [RoleService]
 })
 export class UsersComponent implements OnInit {
   users: User[];

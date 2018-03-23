@@ -30,6 +30,12 @@ import { TemplatesComponent } from './templates/templates.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { ShiftsService } from './services/shifts.service';
+import { UserService } from './services/user.services';
+import { ZoneService } from './services/zone.service';
+import { ChildchecklistPipe } from './pipes/checklist.pipe';
+import { RosterService } from './services/roster.service';
+import { UniquePipe } from './pipes/unique.pipe';
 
 const appRoutes: Routes = [
   { path: 'assingment', component: AssignmentComponent },
@@ -98,7 +104,9 @@ const appRoutes: Routes = [
     PagenotfoundComponent,
     TemplatesComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    ChildchecklistPipe,
+    UniquePipe
   ],
   imports: [
     BrowserModule,
@@ -109,7 +117,8 @@ const appRoutes: Routes = [
       { enableTracing: true, useHash: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+
+  providers: [ShiftsService, UserService, ZoneService, RosterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

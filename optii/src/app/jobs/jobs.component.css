@@ -1,0 +1,32 @@
+.panel-default{
+    margin-bottom: 2px;
+}
+.panel-default>#HeadingOne.panel-heading {
+    background-color: #fff;
+}
+.panel-default>.panel-heading >.parenttitle{
+    font-weight: bold;
+    font-size: 15px; 
+}
+a {
+    color:#2d2d2d; 
+}
+a:focus, a:hover {
+    text-decoration: none;
+    color:#2d2d2d;
+}
+.ui-state-default {
+    background: url("/assets/img/icons/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+    height: 35px;
+    margin-bottom: 4px;
+    margin: 0 0 4px;
+    padding: 6px 10px;
+    width: 100%;
+}
+select,input {
+    height: 30px;
+    border-radius: 4px;
+}

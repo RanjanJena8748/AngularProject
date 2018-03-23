@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table" style="width:95%">
+  <table class="table table-striped table-hover dt-responsive" style="width:95%">
     <thead>
       <tr>
         <th> LEVELS </th>
@@ -9,8 +9,8 @@
         <th>ACTION</th>
       </tr>
     </thead>
-    <tbody *ngFor="let item of cleanlinesslevel">
-      <tr>
+    <tbody>
+      <tr *ngFor="let item of cleanlinesslevel">
         <td>{{item.RatingLevel}}</td>
         <td>{{item.LevelOfCleanlinessDefinition}}</td>
         <td>{{item.FailOrPassLevel}}</td>

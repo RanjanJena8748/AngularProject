@@ -7,7 +7,6 @@ import { Cleannesslevel } from '../models/cleannesslevel';
 
 @Injectable()
 export class CleannesslevelService {
-cleanlinesslevel: Cleannesslevel[];
   constructor(private _http: HttpClient) { }
   getCleannessLevel() {
     const _url = 'http://localhost:3000/api/cleannesslevel';

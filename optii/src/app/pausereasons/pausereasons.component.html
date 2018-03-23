@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table" style="width:95%">
+  <table class="table table-striped table-hover dt-responsive" style="width:95%">
     <thead>
       <tr>
         <th> REASONS </th>
@@ -7,8 +7,8 @@
         <th>ACTION</th>
       </tr>
     </thead>
-    <tbody *ngFor="let item of pausereasons">
-      <tr>
+    <tbody>
+      <tr *ngFor="let item of pausereasons">
         <td>{{item.pausereasontext}}</td>
         <td>{{item.Active==true?'YES':'NO'}}</td>
         <td>

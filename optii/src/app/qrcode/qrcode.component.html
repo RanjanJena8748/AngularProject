@@ -1,3 +1,75 @@
-<p>
-  qrcode works!
-</p>
+<table id="qrcodeinfo" class="display table table-striped table-hover dt-responsive" cellspacing="0" style="width: 100%; padding-top: 20px; ">
+  <tr>
+    <td>Unused QR Codes</td>
+    <td>
+      <span id="Unused"></span>
+    </td>
+    <td>
+      <a class="printqrcode" href="javascript:void(0);">
+        <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>QR Code Printed but not assigned to a location</td>
+    <td>
+      <span id="Unassigned"></span>
+    </td>
+    <td>
+      <a class="deleteqrcode" href="javascript:void(0);">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>Locations with no QR Codes</td>
+    <td>
+      <span id="noQrcode" class="noQrcodes"></span>
+    </td>
+    <td></td>
+
+  </tr>
+</table>
+<div class="row-fluid" style="float: right;margin-top:20px;">
+  <a id="btnQrCodeAdd" class="btn btn-primary deviceBtn pull-right">ADD NEW QR CODE REASON</a>
+</div>
+<table id="qrcodereason" class="display table table-striped table-hover dt-responsive" cellspacing="0" style="width :100%;">
+  <tr>
+    <th>REASONS</th>
+    <th>ACTIONS</th>
+  </tr>
+  <tr *ngFor="let item of qrcodes">
+    <td>{{item.Reasons}}</td>
+    <td>
+      <span class="glyphicon glyphicon-pencil" (click)='ranjan(item.ReasonId)' data-toggle="modal" data-target="#myModal"></span>
+      <span class="glyphicon glyphicon-trash"></span>
+    </td>
+  </tr>
+</table>
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit QR Code Reasons</h4>
+      </div>
+      <div class="modal-body">
+          <input type="hidden" id="nID" />
+          <input type="hidden" class="qrstatus" />
+          <input id="txtQrCodeReason" [(ngModel)]="reasonname" class="input-xlarge" value="{{reasonname}}" type="text" placeholder="">
+      </div>
+      <div class="modal-footer">
+          <input type="button" id="SaveQrCodeReasonBtn" value="Save" class="btn btnMain deviceBtn">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,3 +1,62 @@
-<p>
-  workingarrangment works!
-</p>
+<div class="container">
+  <div class="row-fluid">
+    <select id="ddlShiftActive" class="text-justify">
+      <option value="">--All Shifts--</option>
+      <option value="1">Active</option>
+      <option value="0">Inactive</option>
+    </select>
+    <a id="AddBtn" class="btn btnMain deviceBtn pull-right" data-toggle="modal">ADD NEW SHIFT</a>
+  </div>
+  <div class="row">
+    <table class="table table-striped table-hover dt-responsive" style="width:100%">
+      <thead>
+        <tr>
+          <th> SHIFTS </th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of shifts">
+          <td>{{item.ShiftName}}</td>
+          <td>
+            <a class="glyphicon glyphicon-pencil editshift"></a>
+            <a class="glyphicon glyphicon-trash deletersn"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="text-right">
+      <select id="ddlWaActive" class="text-justify">
+        <option value="">--All Shifts--</option>
+        <option value="1">Active</option>
+        <option value="0">Inactive</option>
+      </select>
+      <input type="button" id="btnAdd" class="btn btnMain deviceBtn" data-ng-click="add()" value="Add New Working Arrangement"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped table-hover dt-responsive" style="width:100%">
+      <thead>
+        <tr>
+          <th> WORKING ARRANGEMENT </th>
+          <th>DESCRIPTION</th>
+          <th> TOTAL HOURS </th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of workingarrangements">
+            <td>{{item.Name}}</td>
+          <td>{{item.Description}}</td>
+          <td>{{item.BaseHoursPerDay}}</td>
+          <td>
+            <a class="glyphicon glyphicon-pencil editshift"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

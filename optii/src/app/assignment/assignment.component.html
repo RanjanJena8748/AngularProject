@@ -1,10 +1,9 @@
 <div class="container" style="width:100%;padding-top: 10px;">
     <div class="row">
         <div class='col-sm-3'>
-            <select id="ddlMainShift">
-                <option selected="selected" value="">- Select Shift -</option>
-                <option selected="selected" value="303E8168-B83A-471B-ABA5-16A547B2DC85">- AM Shift -</option>
-                <option selected="selected" value="303E8168-B83A-471B-ABA5-16A547B2DC85">- PM Shift -</option>
+            <select id="ddlMainShift" [(ngModel)]="selectedShift" (change)="shiftChange()">
+                <option selected="selected" value="0">- Select Shift -</option>
+                <option *ngFor="let opt of shifts" [value]="opt.ShiftId" [selected]="opt.selected == true">{{opt.ShiftName}}</option>
             </select>
         </div>
 
@@ -15,6 +14,7 @@
         <div class='col-sm-3'>
             <select id="ddlMainZone" class="span2">
                 <option>--Show all zones--</option>
+                <option *ngFor="let opt of zones" [value]="opt.ZoneId" [selected]="opt.selected == true">{{opt.ZoneName}}</option>
             </select>
         </div>
 
@@ -24,12 +24,13 @@
                 <option value="1">Unassigned</option>
             </select>
         </div>
-
-
     </div>
     <div class="row se">
         <div class='col-sm-3'>
-            <select id="ddlRosteredUser" class="span2" multiple="multiple" style=" line-height:initial;"></select>
+            <select id="ddlRosteredUser" class="span2"  style=" line-height:initial;">
+                    <option selected="selected" value="0">- Select User -</option>
+                <option *ngFor="let item of rosteredUser" value="{{item.UserId}}">{{item.LastName +', '+item.FirstName}}</option>
+            </select>
         </div>
 
         <div class='col-sm-3' style="padding-left: 10px;">
@@ -79,5 +80,11 @@
             Updating Records, Please Wait..
         </div>
     </div>
-
+    <table class="table">
+            <thead>
+                <th>Zone</th>
+                <th>Area</th>
+                <th>Subarea</th>
+            </thead>
+        </table>
 </div>

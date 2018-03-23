@@ -1,3 +1,56 @@
-<p>
-  jobs works!
-</p>
+<div class="container">
+    <div class="row">
+        <h4>Overdue Inspections</h4>
+            <h5>Notification will appear on device <input type="number" id="txtOverdue" onkeypress="return isNumber(event)" /> minutes prior to Inspection becoming overdue </h5>
+        </div>
+    <div class="row">         
+        <div class="pull-right">                
+            <select id="chklistitemActive">
+                <option value="">-All Checlist item--</option>
+                <option value="0">Inactive</option>
+                <option value="1">Active</option>
+            </select>
+            <select id="chklistActive">
+                <option value="">--All Checklist--</option>
+                <option value="0">Inactive</option>
+                <option value="1">Active</option>
+            </select>
+            <input type="submit" value="Add New" class="btn btnMain deviceBtn plusCheckList" data-toggle="modal" data-target="#add-checklist">
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <br />
+
+      <div id="Accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" *ngFor="let parent of allChecklist | checklist : 'ParentId':null;let parentid">
+          <div class="panel-heading" role="tab" id="HeadingOne">
+            <div class="panel-title parenttitle">
+              <a class="aheading" data-toggle="collapse" data-parent="#Accordion" href="#{{parent.CheckListId}}" aria-expanded="false"
+                aria-controls="CollapseOne">
+                {{parent.CheckListName}}
+              </a>
+            </div>
+            <span class="pull-right" style="margin-top: -17px;">
+              <a class="glyphicon glyphicon-map-marker" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+              <a class="glyphicon glyphicon-plus" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+              <a class="glyphicon glyphicon-pencil editrsn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+              <a class="glyphicon glyphicon-trash deletersn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+            </span>
+          </div>
+
+          <div *ngIf="parent.CheckListId;let parentid" id="{{parent.CheckListId}}" class="panel-body panel-collapse collapse" role="tabpanel"
+            aria-labelledby="HeadingOne">
+            <div class="ui-state-default" *ngFor="let child of allChecklist | checklist : 'ParentId': parentid">
+              <span>{{child.CheckListName}}</span>
+              <span class="pull-right">
+                <a class="glyphicon glyphicon-pencil editrsn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+                <a class="glyphicon glyphicon-trash deletersn" data-target="#myModal-rsnedit" href="javascript:void(0);"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 export class Shift {
-    shiftId: string;
+    ShiftId: string;
     shiftName: string;
-    active: boolean;
+    Active: boolean;
     starttime: string;
 }

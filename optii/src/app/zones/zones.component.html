@@ -1,3 +1,36 @@
-<p>
-  zones works!
-</p>
+<div class="container">
+  <div class="row-fluid m-bottom text-right">
+    <div class="col-sm-3 ">
+      <select id="InteractiveZone">
+        <option value="0">All Zones</option>
+        <option value="1">Active</option>
+        <option value="2">Inactive</option>
+      </select> 
+    </div>
+    <div class="col-sm-3">
+      <input type="button" id="EditDelete" class="btn btnMain deviceBtn" value="Edit / Delete area level">
+    </div>
+    <div class="col-sm-3">
+      <a id="AddAreaSbArea" class="btn btnMain deviceBtn" data-toggle="modal">Add Another Area Level</a>
+    </div>
+    <div class="col-sm-3">
+      <a id="AddZone" class="btn btnMain deviceBtn" data-toggle="modal">Create New Zone</a>
+    </div>
+  </div>
+  <table id="Zones" class="table table-striped table-hover dt-responsive" cellspacing="0" style="width:100%">
+      <thead>
+          <tr>
+            <th> ZONE </th>
+            <th>AREA</th>
+            <th> SUBAREA </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of locations">
+              <td class="sorting_1">{{item.ZoneName}}</td>
+            <td class="location">{{item.AreaName}}</td>
+            <td>{{item.SubAreaName}}</td>
+          </tr>
+        </tbody>
+  </table>
+</div>

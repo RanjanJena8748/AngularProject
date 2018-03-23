@@ -1,0 +1,51 @@
+img{
+    outline:0px !important;
+    border:0px !important
+}
+#AddBtn {
+    margin: 0px 0px 10px 0px;
+    background-color:#3b3b3b;
+    color: #fff;
+}
+.top {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.ngHeaderText {
+    font-weight: bold;
+}
+
+.ngCanvas {
+    width: 100% !important;
+}
+
+.ngRow {
+    width: 100% !important;
+}
+table {
+    border:0px !important;
+    border-radius:0px !important;
+}
+table tr td, table tr th {
+  border-left:0px !important;
+}
+table tr th {
+color: #666 !important;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+font-size: 12px !important;
+font-style: italic;
+font-weight: normal !important;
+text-transform: uppercase;
+}
+ table tr td{     
+color: #333 !important;
+font-size: 14px !important;
+font-weight: 300 !important;
+}
+select{
+      margin-bottom:0px!important;
+   height:30px;
+   line-height:initial;
+   padding:0px 15px 2px;      
+  }
