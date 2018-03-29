@@ -1,0 +1,24 @@
+<section class="user-details">
+  <form id="frmLogin" name="frmLogin" (submit)="login()">
+      <div>
+          <a href="http://optiisolutions.com/" target="_blank" rel="noopener" title="Check out our homepage">
+              <img src="../assets/img/image001.png" alt="optii" />
+          </a>
+          <label for="userName">User Name</label>
+          <input type="text" placeholder="Enter user name" [(ngModel)]="username" name="username" id="userName" required />
+          <label for="lastName">Password</label>
+          <input type="password" id="txtpassword" placeholder="Enter password" [(ngModel)]="password" name="password" required />
+          <br />
+          <br />
+          <!-- <select data-ng-model="currentUser.selectedAssetTreeItem" data-ng-options="at.assetTreeId as at.assetName for at in currentUser.assetTreeAccessList" data-ng-show="currentUser.assetTreeAccessList.length > 1" ng-change="login()"></select>
+          <label data-ng-show="loginResultMessage.length">
+              {{ loginResultMessage }}
+          </label> -->
+
+          <input type="submit" id="btnSubmit" class="btn" value="Login" />
+      </div>
+      <br />
+      <!-- <div id="inActivealert" class="alert alert-danger">          
+      </div> -->
+  </form>
+</section>
