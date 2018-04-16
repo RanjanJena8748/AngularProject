@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Message } from '../../models/message';
 import { Router } from '@angular/router';
-import { FlashMessage } from 'angular-flash-message';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,11 +11,12 @@ export class LoginComponent implements OnInit {
   message: Message;
   username: string;
   password: string;
-  constructor(private authService: AuthService, private router: Router, private flashMessage: FlashMessage) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
   login() {
+    console.log('ranjan');
     const user = {
       username: this.username,
       password: this.password

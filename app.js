@@ -9,8 +9,7 @@ const cookieParser =require('cookie-parser');
 const session=require('express-session');
 
 app.use(cookieParser());
-app.use(session({secret:'secretKey',saveUninitialized:true,resave:true,cookie:{maxAge:60000}}));
-
+app.use(session({resave: true, saveUninitialized: true, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: 60000 }}));
 //adding cors
 app.use(cors());
 

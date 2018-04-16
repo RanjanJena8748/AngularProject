@@ -13,13 +13,6 @@ const User = require('../routes/user');
 
 const config = configuration.config;
 const config1 = configuration.config1;
-const appUsers = {
-  "admin": {
-    username: 'admin',
-    password: 'admin'
-  }
-};
-
 router.get('/users', (req, res, next) => {
   new mssql.ConnectionPool(config).connect().then(pool => {
     return pool.query`select u.UserId,u.UserName,u.[Password],u.FirstName,u.LastName,u.CultureInfoCode,u.Email,ur.RoleName,ur.UserRoleId,u.TypeRowActiveId from [tbl_User] u join tbl_UserAccessRole uar on uar.UserId=u.UserId and uar.IsOverride=0
@@ -241,34 +234,33 @@ router.post('/roster', (req, res, next) => {
   });
 });
 router.post('/auth', (req, res, next) => {
-
-  const username = appUsers[req.body.username];
-  const password = appUsers[req.body.password];
-
+  const username = req.body.username;
+  const password = req.body.password;
   User.getUserByName(username, (err, user) => {
     if (err) throw err;
     if (!user) {
       return res.json({ success: false, msg: 'user not fount' });
     }
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      if (err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(user, configuration.secret, {
-          expiresIn: 600 //10min
-        });
-        res.json({
-          success: true,
-          token: 'JWT ' + token,
-          user: {
-            userid: user.userid,
-            name: user.username
-          }
-        })
-      } else {
-        return res.json({ success: false, msg: 'wrong password' });
-      }
-    })
-  })
+    User.comparePassword(password,user.password)
+  //   User.comparePassword(password, user.password, (err, isMatch) => {
+  //     if (err) throw err;
+  //     if (isMatch) {
+  //       const token = jwt.sign(user, configuration.secret, {
+  //         expiresIn: 600 //10min
+  //       });
+  //       res.json({
+  //         success: true,
+  //         token: 'JWT ' + token,
+  //         user: {
+  //           userid: user.userid,
+  //           name: user.username
+  //         }
+  //       })
+  //     } else {
+  //       return res.json({ success: false, msg: 'wrong password' });
+  //     }
+  //   })
+  // })
 
   // new mssql.ConnectionPool(config).connect().then(pool => {
   //   return pool.request()
@@ -283,6 +275,7 @@ router.post('/auth', (req, res, next) => {
   //     res.json(err);
   //     // ... error checks
   //   });
+  });
 });
 router.get('/auth', (req, res, next) => {
   req.session.user ? res.status(200).send({ loggedIn: true }) : res.status(200).send({ loggedIn: false });

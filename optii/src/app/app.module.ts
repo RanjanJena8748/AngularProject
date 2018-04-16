@@ -38,7 +38,6 @@ import { RosterService } from './services/roster.service';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import {FlashMessageModule} from 'angular-flash-message';
 
 const appRoutes: Routes = [
   { path: 'assingment', component: AssignmentComponent },
@@ -76,7 +75,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '',
-    redirectTo: '/roster',
+    redirectTo: 'roster',
     pathMatch: 'full'
   },
   { path: '**', component: PagenotfoundComponent }
@@ -117,7 +116,6 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     FormsModule,
-    FlashMessageModule,
     RouterModule.forRoot(appRoutes,
       { enableTracing: true, useHash: true } // <-- debugging purposes only
     )
